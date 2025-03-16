@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const Loading = () => {
+export function Loading() {
 	return (
 		<div className="flex flex-col items-center justify-center h-full w-full">
 			<Image
@@ -13,4 +13,4 @@ export const Loading = () => {
 			/>
 		</div>
 	);
-};
+}
