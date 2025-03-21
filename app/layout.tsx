@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ConvexClientProvider } from "@/providers/ConvexClientProvider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
 	title: "Clerk Next.js Quickstart",
@@ -15,7 +16,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="antialiased">
-				<ConvexClientProvider>{children} </ConvexClientProvider>
+				<ConvexClientProvider>
+					<Toaster />
+					{children}
+				</ConvexClientProvider>
 			</body>
 		</html>
 	);
