@@ -13,9 +13,9 @@ export default function DashboardLayout({ children }: Props) {
 			<div className="pl-[60px] h-full">
 				<div className="flex gap-x-3 h-full">
 					<OrgSidebar />
-					<div className="h-full flex-1">
+					<div className="flex flex-col h-full flex-1">
 						<Navbar />
-						{children}
+						<div className="flex-1">{children}</div>
 					</div>
 				</div>
 			</div>
