@@ -1,7 +1,8 @@
 import { api } from "@/convex/_generated/api";
 import { useApiMutation } from "@/hooks/useApiMutation";
+import { useRenameModal } from "@/store/useRenameModal";
 import type { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu";
-import { Link2, Trash2 } from "lucide-react";
+import { Link2, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { ConfirmModal } from "./ConfirmModal";
 import { Button } from "./ui/button";
@@ -22,6 +23,7 @@ type Props = {
 
 export function Actions({ children, side, sideOffset, id, title }: Props) {
 	const { mutate, pending } = useApiMutation(api.board.remove);
+	const { onOpen } = useRenameModal();
 
 	const handleCopy = (e: React.MouseEvent) => {
 		e.stopPropagation();
@@ -48,6 +50,13 @@ export function Actions({ children, side, sideOffset, id, title }: Props) {
 				<DropdownMenuItem onClick={handleCopy} className="p-3 cursor-pointer">
 					<Link2 className="h-4 w-4 mr-2" />
 					Copy board link
+				</DropdownMenuItem>
+				<DropdownMenuItem
+					onClick={() => onOpen(id, title)}
+					className="p-3 cursor-pointer"
+				>
+					<Pencil className="h-4 w-4 mr-2" />
+					Rename
 				</DropdownMenuItem>
 				<ConfirmModal
 					header="Delete board?"
